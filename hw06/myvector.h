@@ -1,9 +1,9 @@
 #pragma once
 
-template <typename T>
+template<typename T>
 class Vector {
 public:
-    Vector(): m_data(new T[m_capacity]) {}
+    Vector() : m_data(new T[m_capacity]) {}
     explicit Vector(int size) : m_size(size), m_capacity(size * 2), m_data(new T[m_capacity]) {}
 
     Vector(const Vector<T>& other) : m_size(other.m_size), m_capacity(other.m_capacity), m_data(new T[m_capacity]) {

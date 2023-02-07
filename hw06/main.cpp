@@ -3,7 +3,7 @@
 #include "mylist.h"
 #include "myvector.h"
 
-template <typename T>
+template<typename T>
 void Print(const T& t) {
     for (size_t i = 0; i < t.size(); ++i) {
         std::cout << t[i] << " ";
@@ -27,9 +27,9 @@ void TestMyList() {
     std::cout << "Size: " << my_list.size() << std::endl;
 
     // 5 удаление третьего (по счёту), пятого и седьмого элементов
-    my_list.erase(6); // 7
-    my_list.erase(4); // 5
-    my_list.erase(2); // 3
+    my_list.erase(6);// 7
+    my_list.erase(4);// 5
+    my_list.erase(2);// 3
 
     // 6 вывод размера контейнера на экран
     Print(my_list);
@@ -69,9 +69,9 @@ void TestMyVector() {
     std::cout << "Size: " << my_vector.size() << std::endl;
 
     // 5 удаление третьего (по счёту), пятого и седьмого элементов
-    my_vector.erase(6); // 7
-    my_vector.erase(4); // 5
-    my_vector.erase(2); // 3
+    my_vector.erase(6);// 7
+    my_vector.erase(4);// 5
+    my_vector.erase(2);// 3
 
     // 6 вывод размера контейнера на экран
     Print(my_vector);

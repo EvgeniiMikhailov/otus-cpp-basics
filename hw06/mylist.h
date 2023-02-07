@@ -2,7 +2,7 @@
 
 #include <exception>
 
-template <typename T>
+template<typename T>
 class List {
     struct Node {
         T data;
