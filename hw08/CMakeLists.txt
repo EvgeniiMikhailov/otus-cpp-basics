@@ -14,7 +14,7 @@ foreach(src_file ${SRC_FILES})
 endforeach(src_file ${SRC_FILES})
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    message("Disable bench_par_stl")
+    message("Disable topk_words")
     set_target_properties(bench_par_stl PROPERTIES EXCLUDE_FROM_ALL TRUE)
 endif()
 
@@ -29,7 +29,7 @@ foreach(target ${TARGETS})
             -Wno-unused-parameter
             -pedantic
         )
-        if (${target} STREQUAL "bench_par_stl" AND
+        if (${target} STREQUAL "topk_words" AND
             CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
             target_compile_options(${target} PRIVATE 
                 -O3
