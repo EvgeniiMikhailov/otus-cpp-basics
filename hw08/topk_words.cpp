@@ -32,15 +32,15 @@ int main(int argc, char *argv[]) {
 
     auto start = std::chrono::high_resolution_clock::now();
     std::vector<Counter> freq_dicts(argc - 1);
+    std::atomic<int> i{1};
     std::for_each(std::execution::par, std::begin(freq_dicts), std::end(freq_dicts),
-                  [&argc, &argv, i=1](Counter& counter) mutable {
-                      std::ifstream input{argv[i]};
+                  [&argc, &argv, &i](Counter& counter) {
+                      std::ifstream input{argv[i++]};
                       if (!input.is_open()) {
-                          std::cerr << "Failed to open file " << argv[i] << '\n';
+                          std::cerr << "Failed to open file " << argv[i-1] << '\n';
                           return EXIT_FAILURE;
                       }
                       count_words(input, counter);
-                      ++i;
                       return 0;
                   });
 
