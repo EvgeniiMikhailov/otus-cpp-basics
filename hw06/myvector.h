@@ -4,7 +4,10 @@ template<typename T>
 class Vector {
 public:
     Vector() : m_data(new T[m_capacity]) {}
-    explicit Vector(int size) : m_size(size), m_capacity(size * 2), m_data(new T[m_capacity]) {}
+
+    ~Vector() {
+        delete[] m_data;
+    }
 
     Vector(const Vector<T>& other) : m_size(other.m_size), m_capacity(other.m_capacity), m_data(new T[m_capacity]) {
         for (int i = 0; i < m_size; ++i) {
@@ -23,10 +26,6 @@ public:
             }
         }
         return *this;
-    }
-
-    ~Vector() {
-        delete[] m_data;
     }
 
     void push_back(const T& value) {
@@ -94,6 +93,6 @@ public:
 
 private:
     size_t m_size = 0;
-    size_t m_capacity = 0;
+    size_t m_capacity = 1;
     T* m_data;
 };

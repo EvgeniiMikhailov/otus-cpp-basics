@@ -5,6 +5,10 @@
 
 template<typename T>
 void Print(const T& t) {
+    if (t.empty()) {
+        std::cout << "Empty" << std::endl;
+        return;
+    }
     for (size_t i = 0; i < t.size(); ++i) {
         std::cout << t[i] << " ";
     }
@@ -14,6 +18,7 @@ void Print(const T& t) {
 void TestMyList() {
     // 1 создание объекта контейнера для хранения объектов типа int
     List<int> my_list;
+    Print(my_list);
 
     // 2 добавление в контейнер десяти элементов (0, 1 ... 9)
     for (int i = 0; i < 10; ++i) {
@@ -56,6 +61,7 @@ void TestMyList() {
 void TestMyVector() {
     // 1 создание объекта контейнера для хранения объектов типа int
     Vector<int> my_vector;
+    Print(my_vector);
 
     // 2 добавление в контейнер десяти элементов (0, 1 ... 9)
     for (int i = 0; i < 10; ++i) {

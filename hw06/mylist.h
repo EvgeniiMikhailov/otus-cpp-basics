@@ -14,6 +14,13 @@ class List {
     };
 
 public:
+    List() = default;
+    ~List() {
+        while (head_) {
+            pop_front();
+        }
+    }
+
     void push_back(const T& value) {
         Node* new_node = new Node(value, nullptr, tail_);
         if (tail_) {
