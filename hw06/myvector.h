@@ -30,13 +30,7 @@ public:
 
     void push_back(const T& value) {
         if (m_size == m_capacity) {
-            m_capacity *= 2;
-            T* newData = new T[m_capacity];
-            for (size_t i = 0; i < m_size; ++i) {
-                newData[i] = m_data[i];
-            }
-            delete[] m_data;
-            m_data = newData;
+            resize();
         }
         m_data[m_size++] = value;
     }
@@ -73,16 +67,14 @@ public:
 
     void insert(size_t idx, const T& value) {
         if (idx >= m_size) {
+            if (idx == 0) {
+                push_back(value);
+                return;
+            }
             throw std::runtime_error("Index out of range");
         }
         if (m_size == m_capacity) {
-            m_capacity *= 2;
-            T* newData = new T[m_capacity];
-            for (size_t i = 0; i < m_size; ++i) {
-                newData[i] = m_data[i];
-            }
-            delete[] m_data;
-            m_data = newData;
+            resize();
         }
         for (size_t i = m_size; i > idx; --i) {
             m_data[i] = m_data[i - 1];
@@ -91,8 +83,22 @@ public:
         ++m_size;
     }
 
+    void push_front(const T& value) {
+        insert(0, value);
+    }
+
 private:
     size_t m_size = 0;
     size_t m_capacity = 1;
     T* m_data;
+
+    void resize() {
+        m_capacity *= 2;
+        T* newData = new T[m_capacity];
+        for (size_t i = 0; i < m_size; ++i) {
+            newData[i] = m_data[i];
+        }
+        delete[] m_data;
+        m_data = newData;
+    }
 };
