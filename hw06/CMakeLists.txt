@@ -46,3 +46,5 @@ target_link_libraries(
 
 include(GoogleTest)
 gtest_discover_tests(hw_test)
+
+add_test(hw_test hw_test)
