@@ -38,6 +38,7 @@ enable_testing()
 add_executable(
         hw_test
         vector_test.cc
+        list_test.cc
 )
 target_link_libraries(
         hw_test
